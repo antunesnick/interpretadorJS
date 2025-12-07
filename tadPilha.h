@@ -1,27 +1,29 @@
+#ifndef TAD_PILHA_H
+#define TAD_PILHA_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "tadLista.h" 
 
 typedef union TipoValor {
 	int valorInt;
 	char valorString[128];
 } TipoValor;
 
-
 typedef struct NoPilha{
 	char identificador[50];
 	TipoValor valor;
-	int tipo; //0 Valor 1 endereço
-	int tipoValor; //0 TIPO_INT 1 TIPO_STRING
+	int tipo;
+	int tipoValor;
+	char is_const;
 	struct Lista *ponteiroLinha;
 	struct NoPilha *prox;
-	
 } NoPilha;
 
 typedef struct Pilha{
 	NoPilha *topo;
-}Pilha;
-
+} Pilha;
 
 void initP(Pilha **p) {
 	(*p) = (Pilha*)malloc(sizeof(Pilha));
@@ -42,7 +44,6 @@ NoPilha *novoNoPilha(char identificador[50], TipoValor valor, int tipo, struct L
         strcpy(novo->identificador, "[endereco]");
         novo->ponteiroLinha = linha;
     }
-    
     return novo;
 }
 
@@ -91,4 +92,5 @@ NoPilha* buscarVariavel(Pilha *p, char *nome) {
 	}
 	return aux;	
 }
+#endif
 

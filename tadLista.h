@@ -1,3 +1,6 @@
+#ifndef TAD_LISTA_H
+#define TAD_LISTA_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -96,7 +99,7 @@ void liberaPrograma(Programa **p) {
 	}
 	
 }
-
+#endif
 
 
 
